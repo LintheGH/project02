@@ -11,7 +11,13 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      'yg':'https://b2capigateway.yiguo.com'
+      '/yg': {
+        target: 'https://h5homeapi.yiguo.com',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/yg': ''
+        }
+      }
     },
 
     // Various Dev Server settings

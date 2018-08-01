@@ -3,11 +3,17 @@
 import Vue from 'vue'
 import App from './App'
 import computedRem from './modules/rem'
+import Router from './routers'
+import axios from 'axios'
+import 'swiper/dist/css/swiper.min.css'
+import './stylesheets/main.scss'
 Vue.config.productionTip = false
+Vue.prototype.$http = axios
 computedRem()
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
+  router: Router,
   components: { App },
   template: '<App/>'
 })

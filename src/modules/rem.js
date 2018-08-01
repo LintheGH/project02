@@ -6,10 +6,10 @@
 */
 var computedRem = function (pictureWidth = 750, remWidth = 100) {
   let html = document.documentElement
-  html.style.fontSize = html.clientWidth / (pictureWidth / (remWidth * 2))
+  html.style.fontSize = html.clientWidth / (pictureWidth / (remWidth * 2)) + 'px'
   window.onresize = function () {
     let html = document.documentElement
-    html.style.fontSize = html.clientWidth / (pictureWidth / (remWidth * 2))
+    html.style.fontSize = html.clientWidth / (pictureWidth / (remWidth * 2)) + 'px'
   }
 }
 export default computedRem

@@ -16,7 +16,7 @@ import Swiper from 'swiper'
 export default {
   name: 'HomeBanner',
   props: {
-      list: Array
+    list: Array
   },
   computed: {
     showSwiper () {

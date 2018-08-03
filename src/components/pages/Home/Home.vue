@@ -15,7 +15,7 @@ import HomeAdv from './Components/Advertise'
 import GoodsList from './Components/GoodsList'
 import HomeHeader from './Components/Header'
 export default {
-  name: 'home',
+  name: 'app-home',
   data () {
     return {
       HomeBanner: [],
@@ -28,7 +28,7 @@ export default {
     HomeBanner,
     HomeAdv,
     GoodsList,
-    HomeHeader,
+    HomeHeader
   },
   methods: {
     getBanners () {

@@ -29,6 +29,7 @@ export default {
       li{
         width: 25%;
         display:flex;
+        font-size: .11rem;
         flex-direction: column;
         justify-content: center;
         align-items: center;

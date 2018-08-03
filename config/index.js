@@ -17,6 +17,13 @@ module.exports = {
         pathRewrite: {
           '^/yg': ''
         }
+      },
+      '/login': {
+        target: 'https://b2capigateway.yiguo.com',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/login': ''
+        }
       }
     },
 

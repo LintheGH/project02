@@ -1,15 +1,19 @@
 <template>
-  <div class="app-home">
+  <div class="app-home page-top-bottom">
+    <home-header></home-header>
     <home-banner :list="HomeBanner"></home-banner>
     <div class="adv-top-pic"><img :src="pictureUrl" alt=""></div>
     <home-adv :list="HomeAdv"></home-adv>
     <goods-list :list="GoodsList"></goods-list>
+    <app-nav></app-nav>
+    <suspend-top></suspend-top>
   </div>
 </template>
 <script>
 import HomeBanner from './Components/HomeBanner'
 import HomeAdv from './Components/Advertise'
 import GoodsList from './Components/GoodsList'
+import HomeHeader from './Components/Header'
 export default {
   name: 'home',
   data () {
@@ -23,7 +27,8 @@ export default {
   components: {
     HomeBanner,
     HomeAdv,
-    GoodsList
+    GoodsList,
+    HomeHeader,
   },
   methods: {
     getBanners () {
@@ -46,10 +51,12 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-  .adv-top-pic{
-    width: 100%;
-    img{
+  .app-home{
+    .adv-top-pic{
       width: 100%;
+      img{
+        width: 100%;
+      }
     }
   }
 </style>

@@ -36,7 +36,7 @@ export default {
         this.HomeBanner = res.data.data.template.componentList[0].carouselPictures
         this.pictureUrl = res.data.data.template.componentList[0].adPictures[0].pictureUrl
         this.HomeAdv = res.data.data.template.componentList[0].componentNavs
-        this.pictureUrl1 = res.data.data.template.componentList
+        this.GoodsList = res.data.data.template.componentList
       })
     }
   },

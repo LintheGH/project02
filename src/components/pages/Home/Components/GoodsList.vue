@@ -1,9 +1,10 @@
 <template>
-  <div class="goods-list"
-   v-for = "(items,i) in list"
-  :key="i">
-    <div class="goods-content">
-      <img src="" alt="">
+  <div>
+    <div class="goods-list"
+    v-for="(items,i) in list" :key="i">
+      <div class="goods-content">
+        <img src="" alt="">
+      </div>
     </div>
   </div>
 </template>

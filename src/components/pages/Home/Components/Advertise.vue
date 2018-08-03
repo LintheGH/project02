@@ -1,7 +1,7 @@
 <template>
   <div class="adv">
     <ul class="adv-list">
-      <div class="adv-top-pic"><img :src="pictureUrl" alt=""></div>
+      <!-- <div class="adv-top-pic"><img :src="pictureUrl" alt=""></div> -->
       <li v-for = " adv in list"
       :key = "adv.navIndex">
         <img :src="adv.pictureUrl" alt="">

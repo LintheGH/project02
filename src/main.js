@@ -7,6 +7,7 @@ import Router from './routers'
 import axios from 'axios'
 import 'swiper/dist/css/swiper.min.css'
 import './stylesheets/main.scss'
+import './components/assets/styles/iconfont.css'
 Vue.config.productionTip = false
 Vue.prototype.$http = axios
 computedRem()

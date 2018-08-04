@@ -1,6 +1,6 @@
 <template>
-  <div class="swiper-container">
-    <div class="swiper-wrapper" v-if="showSwiper">
+  <div class="swiper-container" ref="el">
+    <div class="swiper-wrapper">
       <div class="swiper-slide"
         v-for = '(picture, i) in list'
         :key = 'i'
@@ -16,7 +16,22 @@ import Swiper from 'swiper'
 export default {
   name: 'HomeBanner',
   props: {
-      list: Array
+    list: Array
+  },
+  data () {
+    return {
+    }
+  },
+  updated () {
+    new Swiper('.swiper-container', {
+      pagination: {
+        el: '.swiper-pagination'
+      },
+      loop: true,
+      autoplay: {
+        disableOnInteraction: false
+      }
+    })
   },
   computed: {
     showSwiper () {

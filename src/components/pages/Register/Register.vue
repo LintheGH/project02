@@ -47,7 +47,7 @@
     <div class="logo">
       <em class="yiguo_logo"></em>
     </div>
-    <register-code v-if="!isClose" :close="close" :letCodeImgCorrect="letCodeImgCorrect"></register-code>
+    <register-code v-if="!isClose" :close="close" :letCodeImgCorrect="letCodeImgCorrect" :phone="phone"></register-code>
   </div> 
 </template>
 <script>
@@ -63,7 +63,7 @@ export default {
       passwordt: '',
       countDown: 60,
       isClick: false,
-      isClose: false,
+      isClose: true,
       codeImgCorrect: false
     }
   },
@@ -132,7 +132,7 @@ export default {
       this.isClose = true
     },
     letCodeImgCorrect () {
-      this.codeImgCorrect = true
+      this.isClose = true
     }
   }
 }

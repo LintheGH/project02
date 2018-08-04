@@ -30,7 +30,7 @@ export default {
       codeId: ''
     }
   },
-  props: ['close', 'letCodeImgCorrect','phone'],
+  props: ['close', 'letCodeImgCorrect','phone','countDown'],
   methods: {
     getCode () {
       this.$http({
@@ -92,6 +92,8 @@ export default {
       }).then(res => {
         if (res.data.IsSuccessful) {
           this.letCodeImgCorrect()
+          this.countDown()
+          this.$cookies.set("ygm_user","JfwA0cuVQvHa3Id/Az1KxrYi9AgWL1Qm48vJUVz50tTvl8dMxknSs9XA9EEBzBXcPf19qJz++R/kjC2vWb2gDUVFGX+sx7oLnXf3Z4/NVvuJBeRb6PKNeorFm5cHSCaGDmEq3Pd9gfLgsaX9Muxw5zzsxpzC+QMJMFWUeI+Ec3o=")
         }else {
           Toast({
             message: res.data.Message,

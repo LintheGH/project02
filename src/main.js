@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import computedRem from './modules/rem'
 import router from './routers'
+import VueCookies from 'vue-cookies'
 import AppNav from './components/Commons/AppNav'
 import SuspendTop from './components/Commons/SuspendTop'
 import UIInput from './components/Commons/UIInput'
@@ -16,6 +17,8 @@ Vue.config.productionTip = false
 Vue.prototype.$http = axios
 // 计算根 rem
 computedRem()
+// 注册插件
+Vue.use(VueCookies)
 /* eslint-disable no-new */
 // 全局注册组件
 Vue.component('app-nav', AppNav)

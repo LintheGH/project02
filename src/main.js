@@ -9,6 +9,7 @@ import SuspendTop from './components/Commons/SuspendTop'
 import UIInput from './components/Commons/UIInput'
 import axios from 'axios'
 import 'swiper/dist/css/swiper.min.css'
+import 'mint-ui/lib/style.css'
 import './stylesheets/main.scss'
 Vue.config.productionTip = false
 // Vue原型对象添加请求插件

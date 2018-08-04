@@ -1,12 +1,13 @@
 <template>
   <div class="ui-input">
-    {{ value }}
+    <slot name="slot1"></slot>
     <input 
       :type="type || 'text'"
       :value="value"
-      :placeholder="placehoder"
-      @change="$emit('change', $event.target.value)"
+      :placeholder="placeholder"
+      @input="$emit('input', $event.target.value)"
     >
+    <slot name="slot2"></slot>
   </div>
 </template>
 <script>
@@ -15,9 +16,8 @@ export default {
   props: {
     value: String,
     type: String,
-    btnName:String,
     icon: String,
-    placehoder: String,
+    placeholder: String
   }
 }
 </script>
@@ -33,23 +33,7 @@ export default {
       height: .3rem;
       border: 0 none;
       width: 2.5rem;
-    }
-    .codeBtn {
-      position: absolute;
-      top: .15rem;
-      right: .15rem;
-      height: .3rem;
-      padding: 0 .06rem;
-      line-height: .3rem;
-      text-align: center;
-      color: #fff;
-      border-radius: .04rem;
-      background: #008842;
-    }
-    .iconfont{
-      font-size:.20rem;
-      margin-right: .1rem;
-      background: #008842;
+      font-size: .16rem;
     }
   }
 </style>

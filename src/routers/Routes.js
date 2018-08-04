@@ -2,7 +2,8 @@ import Home from '../components/pages/Home/Home'
 import Classify from '../components/pages/Classify/Classify'
 import Cart from '../components/pages/Cart/Cart'
 import My from '../components/pages/My/My'
-import Login from '../components/Commons/UIInput'
+import Login from '../components/pages/Login/Login'
+import Register from '../components/pages/Register/Register'
 var routes = [
   {
     path: '/',
@@ -15,9 +16,14 @@ var routes = [
     component: Classify
   },
   {
-    path: '/login',
+    path: '/log',
     name: 'login',
     component: Login
+  },
+  {
+    path: '/register',
+    name: 'register',
+    component: Register
   },
   {
     path: '/cart',
@@ -31,7 +37,7 @@ var routes = [
   },
   {
     path: '**',
-    redirect: { name: 'home'}
+    redirect: {name: 'home'}
   }
 ]
 export default routes

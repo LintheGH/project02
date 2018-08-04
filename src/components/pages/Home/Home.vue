@@ -1,5 +1,6 @@
 <template>
-  <div class="app-home">
+  <div class="app-home page-top-bottom">
+    <home-header></home-header>
     <home-banner :list="HomeBanner"></home-banner>
     <div class="adv-top-pic"><img :src="pictureUrl" alt=""></div>
     <home-adv :list="HomeAdv"></home-adv>
@@ -88,10 +89,12 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-  .adv-top-pic{
-    width: 100%;
-    img{
+  .app-home{
+    .adv-top-pic{
       width: 100%;
+      img{
+        width: 100%;
+      }
     }
   }
 </style>

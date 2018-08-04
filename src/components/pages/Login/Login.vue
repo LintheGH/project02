@@ -51,13 +51,20 @@ export default {
     getCode () {
       this.$http({
         method: 'post',
-        url: '/login/api/user/User/GetVerificationCode',
+        url: '/loginregister/api/user/User/GetVerificationCode',
         headers: {
-          'appName': 3000025
+          'appName': ''
         },
         data: {
-          firstName: 'Fred',
-          lastName: 'Flintstone'
+          Body: {},
+          Head: {
+            CityCode:"512",
+            CityId:"c8dbd17f-a8e0-43b1-b9ce-de1efdc2670e",
+            DeviceId:"c8cc0154da5193973d9c3d068c6660fd",
+            DistrictId:"2252dc4d-0069-4c0f-b60f-21ce5607dd46",
+            LoginToken:"",
+            Token:""
+          }
         }
       }).then(res => {
         this.codeImg = res.data.Data.CodeImg

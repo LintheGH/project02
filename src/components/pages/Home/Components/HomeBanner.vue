@@ -1,8 +1,8 @@
 <template>
   <div class="swiper-container">
-    <div class="swiper-wrapper">
+    <div class="swiper-wrapper" v-if="showSwiper">
       <div class="swiper-slide"
-        v-for = '(picture, i) in bannerPictures'
+        v-for = '(picture, i) in list'
         :key = 'i'
       >
         <img :src="picture.pictureUrl" alt="">
@@ -12,37 +12,16 @@
   </div>
 </template>
 <script>
-import Vue from 'vue'
 import Swiper from 'swiper'
 export default {
   name: 'HomeBanner',
-  data () {
-    return {
-      bannerPictures: []
-    }
+  props: {
+    list: Array
   },
-  methods: {
-    getBanners () {
-      this.$http.post('/yg/api/Template/GetTemplate', {
-        area: {Id: 'c8dbd17f-a8e0-43b1-b9ce-de1efdc2670e', Code: '512', Name: '广州', Default: 0, Version: '2.0'},
-        channel: 5,
-        token: ''
-      }).then((res) => {
-        this.bannerPictures = res.data.data.template.componentList[0].carouselPictures
-        Vue.nextTick(() => {
-          new Swiper('.swiper-container', {
-            loop: true,
-            autoplay: { disableOnInteraction: false },
-            pagination: {
-              el: '.swiper-pagination'
-            }
-          })
-        })
-      })
+  computed: {
+    showSwiper () {
+      return this.list.length
     }
-  },
-  created () {
-    this.getBanners()
   }
 }
 </script>

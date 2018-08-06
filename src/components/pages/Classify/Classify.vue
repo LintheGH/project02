@@ -1,6 +1,7 @@
 <template>
   <div class="app-classify">
     diakdfaj
+    <app-nav></app-nav>
   </div>
 </template>
 <script>

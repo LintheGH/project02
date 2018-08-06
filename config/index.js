@@ -18,11 +18,11 @@ module.exports = {
           '^/yg': ''
         }
       },
-      '/loginregister': {
+      '/gateway': {
         target: 'https://b2capigateway.yiguo.com',
         changeOrigin: true,
         pathRewrite: {
-          '^/loginregister': ''
+          '^/gateway': ''
         }
       }
     },

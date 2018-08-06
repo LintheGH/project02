@@ -47,7 +47,7 @@
     <div class="logo">
       <em class="yiguo_logo"></em>
     </div>
-    <register-code v-if="!isClose" :close="close" :letCodeImgCorrect="letCodeImgCorrect" :phone="phone"></register-code>
+    <register-code v-if="!isClose" :close="close" :letCodeImgCorrect="letCodeImgCorrect" :phone="phone" :countDown="_countDown"></register-code>
   </div> 
 </template>
 <script>
@@ -91,17 +91,37 @@ export default {
       }
       if(!passwordtReg){
         Toast({
-        message: '密码不一致',
-        position: 'middle',
-        duration: 2000
-      })
-        return
+          message: '密码不一致',
+          position: 'middle',
+          duration: 2000
+        })
+          return
       }
-      this.$http.post('/loginregister/api/user/User/UserRegister')
-      .then(res => {
+      this.$http({// https://b2capigateway.yiguo.com/api/user/User/ResetPassword resetpassword
+        method: 'post',
+        url: '/gateway/api/user/User/UserRegister',
+        headers: {
+          'appName': 3000025
+        },
+        data: {
+          Body: {
+            ActivityCode: "",
+            Password: this.password,
+            Source: 5,
+            UserName: this.phone,
+            VerifyCode: this.code
+          },
+          Head: {
+            CityCode: "512",
+            CityId: "c8dbd17f-a8e0-43b1-b9ce-de1efdc2670e",
+            DeviceId: "c8cc0154da5193973d9c3d068c6660fd",
+            DistrictId: "2252dc4d-0069-4c0f-b60f-21ce5607dd46",
+            LoginToken: '',
+            Token: ''
+          }
+        }
+      }).then(res => {
         console.log(res)
-      }).catch(err => {
-        console.log(err)
       })
     },
     getCode () {
@@ -115,25 +135,30 @@ export default {
         return
       }
       this.isClose = false
-      if(this.codeImgCorrect) {
+    },
+    close () {
+      this.isClose = true
+    },
+    letCodeImgCorrect () {
+      this.codeImgCorrect = true
+    },
+    _countDown () {
+      if (this.codeImgCorrect) {
         this.isClose = true
         this.isClick = true
         let timer = setInterval(() => {
           this.countDown--
-          if(this.countDown === 0){
+          if (this.countDown === 0) {
             clearInterval(timer)
             this.countDown = 60
             this.isClick = false
           }
         },1000)
       }
-    },
-    close () {
-      this.isClose = true
-    },
-    letCodeImgCorrect () {
-      this.isClose = true
     }
+  },
+  created () {
+    console.log(this)
   }
 }
 </script>
@@ -200,5 +225,4 @@ export default {
       }
     }
   }
-  
 </style>

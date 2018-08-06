@@ -7,6 +7,10 @@ import Register from '../components/pages/Register/Register'
 var routes = [
   {
     path: '/',
+    redirect: {name: 'home'}
+  },
+  {
+    path: '/home',
     name: 'home',
     component: Home
   },

@@ -15,11 +15,13 @@
     <goods-piece :list="GoodsPiece1"></goods-piece>
     <goods-piece :list="GoodsPiece2"></goods-piece>
     <goods-piece :list="GoodsPiece3"></goods-piece>
+    <app-nav></app-nav>
   </div>
 </template>
 <script>
 import HomeBanner from './Components/HomeBanner'
 import HomeAdv from './Components/Advertise'
+import HomeHeader from './Components/Header'
 import GoodsList from './Components/GoodsList'
 import GoodsItem from './Components/GoodsItem'
 import GoodsPiece from './Components/GoodsPiece'
@@ -51,7 +53,8 @@ export default {
     HomeAdv,
     GoodsList,
     GoodsItem,
-    GoodsPiece
+    GoodsPiece,
+    HomeHeader
   },
   methods: {
     getBanners () {

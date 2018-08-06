@@ -1,10 +1,17 @@
 <template>
   <div class="app-my">
-    my
+    <user-info :userInfo="userInfo" :checkInfo="CheckInfo"></user-info>
+    <account :balanceAndCoupons="BalanceAndCoupons"></account>
+    <order :orderIcons="OrderIcons"></order>
+    <service :iconList="IconList" class="service"></service>
     <app-nav></app-nav>
   </div>
 </template>
 <script>
+import UserInfo from './Components/UserInfo'
+import Account from './Components/Account'
+import Order from './Components/Order'
+import Service from './Components/Service'
 export default {
   name: 'app-my',
   data () {
@@ -27,6 +34,22 @@ export default {
       HeadSmallBgUrl: ''
     }
   },
+  computed: {
+    token () {
+      let cookie_token = this.$cookies.get('ygm_user')
+      if (cookie_token) {
+        return cookie_token
+      } else {
+        return ''
+      }
+    }
+  },
+  components: {
+    UserInfo,
+    Account,
+    Order,
+    Service
+  },
   created () {
     this.$http({
       url: '/gateway/api/user/User/GetUserInfo',
@@ -41,8 +64,8 @@ export default {
           CityId: 'c8dbd17f-a8e0-43b1-b9ce-de1efdc2670e',
           DeviceId: '36f57175b36bb3b8c5ae1c378c8ad38b',
           DistrictId: '2252dc4d-0069-4c0f-b60f-21ce5607dd46',
-          LoginToken: '',
-          Token: ''
+          LoginToken: this.token,
+          Token: this.token
         }
       }
     }).then(res => {
@@ -66,5 +89,12 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-
+  .app-my {
+    width: 100%;
+    height: 100%;
+    background: #F4F4F4;
+    .service {
+      margin-top: .2rem;
+    }
+  }
 </style>

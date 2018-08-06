@@ -5,6 +5,7 @@
         v-for = "item in navItems" 
         :key = "item.id" 
         :to = "item.name"
+        exact
         active-class = "active" 
         class="nav-item"
       >

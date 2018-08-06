@@ -16,6 +16,7 @@
     <goods-piece :list="GoodsPiece2"></goods-piece>
     <goods-piece :list="GoodsPiece3"></goods-piece>
     <app-nav></app-nav>
+    <suspend-top></suspend-top>
   </div>
 </template>
 <script>
@@ -88,6 +89,9 @@ export default {
   },
   created () {
     this.getBanners()
+  },
+  beforeDestroy () {
+    window.onscroll = null;
   }
 }
 </script>

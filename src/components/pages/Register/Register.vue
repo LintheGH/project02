@@ -122,6 +122,16 @@ export default {
         }
       }).then(res => {
         console.log(res)
+        if (res.data.Data.IsSuccessful) {
+          this.$cookies.set('ygm_user',res.data.Data.UserInfo.LoginToken,"7d","/")
+          this.$router.replace('/my')
+        } else {
+          Toast({
+            message: res.data.Data.Message,
+            position: 'middle',
+            duration: 2000
+          })
+        }
       })
     },
     getCode () {

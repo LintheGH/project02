@@ -22,6 +22,7 @@ export default {
   },
   mounted () {
     window.onscroll = () => {
+      console.log('scorll')
       this.scrolled = window.scrollY
     }
   }
@@ -32,7 +33,6 @@ export default {
     width:0.4rem;
     height: 0.4rem;
     border-radius: 50%;
-    border:1px solid #333;
     position:fixed;
     bottom:18%;
     right:4%;

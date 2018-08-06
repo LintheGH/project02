@@ -8,6 +8,7 @@ import VueCookies from 'vue-cookies'
 import AppNav from './components/Commons/AppNav'
 import SuspendTop from './components/Commons/SuspendTop'
 import UIInput from './components/Commons/UIInput'
+import store from './store'
 import axios from 'axios'
 import 'swiper/dist/css/swiper.min.css'
 import 'mint-ui/lib/style.css'
@@ -28,6 +29,7 @@ Vue.component('ui-input', UIInput)
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

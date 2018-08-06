@@ -4,6 +4,8 @@ import Cart from '../components/pages/Cart/Cart'
 import My from '../components/pages/My/My'
 import Login from '../components/pages/Login/Login'
 import Register from '../components/pages/Register/Register'
+import Setting from '../components/pages/Setting/Setting'
+import Article from '../components/pages/Article/Article'
 var routes = [
   {
     path: '/',
@@ -40,8 +42,14 @@ var routes = [
     component: My
   },
   {
+    path: '/setting',
+    name: 'setting',
+    component: Setting
+  },
+  {
     path: '**',
-    redirect: {name: 'home'}
+    name: 'other',
+    component: Article
   }
 ]
 export default routes

@@ -4,7 +4,15 @@ import Cart from '../components/pages/Cart/Cart'
 import My from '../components/pages/My/My'
 import Login from '../components/pages/Login/Login'
 import Register from '../components/pages/Register/Register'
+<<<<<<< HEAD
 // import Channelhome from '../components/pages/Classify/Components/channelhome'
+=======
+import Setting from '../components/pages/Setting/Setting'
+import Article from '../components/pages/Article/Article'
+import ProductList from '../components/pages/ProductList/ProductList'
+import List from '../components/pages/ProductList/Components/List'
+import Product from '../components/pages/Product/Product'
+>>>>>>> c8e69167e4a31a75ae5e445779c7b9c1dfb397eb
 var routes = [
   {
     path: '/',
@@ -47,8 +55,24 @@ var routes = [
     component: My
   },
   {
+    path: '/setting',
+    name: 'setting',
+    component: Setting
+  },
+  {
+    path: '/productlist',
+    name: 'productlist',
+    component: ProductList,
+  },
+  {
+    path: '/product/:CategoryId',
+    name: 'product',
+    component: Product,
+  },
+  {
     path: '**',
-    redirect: {name: 'home'}
+    name: 'other',
+    component: Article
   }
 ]
 export default routes

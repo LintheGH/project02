@@ -17,5 +17,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-
+  .app-classify {
+    height: 100rem;
+  }
 </style>

@@ -37,6 +37,7 @@
   </div>
 </template>
 <script>
+import { Toast } from 'mint-ui'
 export default {
   name: 'app-login',
   data () {
@@ -44,7 +45,8 @@ export default {
       username: '',
       password: '',
       code: '',
-      codeImg: ''
+      codeImg: '',
+      codeId: ''
     }
   },
   methods: {
@@ -53,7 +55,7 @@ export default {
         method: 'post',
         url: '/gateway/api/user/User/GetVerificationCode',
         headers: {
-          'appName': ''
+          'appName': 3000025
         },
         data: {
           Body: {},
@@ -68,8 +70,51 @@ export default {
         }
       }).then(res => {
         this.codeImg = res.data.Data.CodeImg
+        this.codeId = res.data.Data.CodeId
       }).catch(err => {
         console.log(err)
+      })
+    },
+    submit () {
+      this.$http({
+        method: 'post',
+        url: '/gateway/api/user/User/UserLogin',
+        headers: {
+          'appName': 3000025
+        },
+        data: {
+          Body: {
+            UserName: this.username,
+            Password: this.password,
+            CodeVlaue: this.code,
+            CodeId: this.codeId
+          },
+          Head: {
+            CityCode: '512',
+            CityId: 'c8dbd17f-a8e0-43b1-b9ce-de1efdc2670e',
+            DeviceId: 'c8cc0154da5193973d9c3d068c6660fd',
+            DistrictId: '2252dc4d-0069-4c0f-b60f-21ce5607dd46',
+            LoginToken: '',
+            Token: ''
+          }
+        }
+      }).then( res => {
+        console.log(res)
+        if (res.data.IsSuccessful) {
+          // 存 cookie
+          this.$cookies.set('ygm_user',res.data.Data.UserInfo.LoginToken,"7d","/")
+          this.$router.replace('/my')
+        } else {
+          Toast({
+            message: res.data.Message,
+            position: 'middle',
+            duration: 2000
+          })
+          this.username = ''
+          this.password = ''
+          this.code = ''
+          this.getCode()
+        }
       })
     }
   },

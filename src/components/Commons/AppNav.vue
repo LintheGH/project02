@@ -38,6 +38,7 @@ export default {
     background: #fff;
     padding:0 11px;
     position:fixed;
+    z-index: 100;
     left:0;
     bottom:0;
     .nav-in{

@@ -4,6 +4,7 @@ import Cart from '../components/pages/Cart/Cart'
 import My from '../components/pages/My/My'
 import Login from '../components/pages/Login/Login'
 import Register from '../components/pages/Register/Register'
+// import Channelhome from '../components/pages/Classify/Components/channelhome'
 var routes = [
   {
     path: '/',
@@ -18,6 +19,12 @@ var routes = [
     path: '/classify',
     name: 'classify',
     component: Classify
+    // children: [
+    //   {
+    //     path: '',
+    //     redirect: { name: 'Channelhome'}
+    //   }
+    // ]
   },
   {
     path: '/log',

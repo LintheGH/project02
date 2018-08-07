@@ -6,6 +6,9 @@ import Login from '../components/pages/Login/Login'
 import Register from '../components/pages/Register/Register'
 import Setting from '../components/pages/Setting/Setting'
 import Article from '../components/pages/Article/Article'
+import ProductList from '../components/pages/ProductList/ProductList'
+import List from '../components/pages/ProductList/Components/List'
+import Product from '../components/pages/Product/Product'
 var routes = [
   {
     path: '/',
@@ -45,6 +48,16 @@ var routes = [
     path: '/setting',
     name: 'setting',
     component: Setting
+  },
+  {
+    path: '/productlist',
+    name: 'productlist',
+    component: ProductList,
+  },
+  {
+    path: '/product/:CategoryId',
+    name: 'product',
+    component: Product,
   },
   {
     path: '**',

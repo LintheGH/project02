@@ -60,11 +60,11 @@ export default {
   methods: {
     getBanners () {
       this.$http.post('/yg/api/Template/GetTemplate', {
-        area: {Id: 'c8dbd17f-a8e0-43b1-b9ce-de1efdc2670e', Code: '512', Name: '广州', Default: 0, Version: '2.0'},
+        area: {Id: 'c8dbd17f-a8e0-43b1-b9ce-de1efdc2670e', DId: '2252dc4d-0069-4c0f-b60f-21ce5607dd46', DCode: '512', Code: '512', Name: '广州', Default: 0, Version: '2.0'},
         channel: 5,
         token: ''
       }).then((res) => {
-        console.log(res.data.data)
+        console.log(res)
         this.HomeBanner = res.data.data.template.componentList[0].carouselPictures
         this.pictureUrl = res.data.data.template.componentList[0].adPictures[0].pictureUrl
         this.pictureUrl1 = res.data.data.template.componentList[1].adPictures[0].pictureUrl

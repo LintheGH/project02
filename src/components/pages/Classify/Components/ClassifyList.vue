@@ -2,19 +2,18 @@
   <div class="searchContent">
     <div class="nav">
       <ul class="navList" v-if="ClassifyList.length">
-        <router-link
+        <li
         tag="li"
         v-for="(item,index) in ClassifyList"
-        to="/classify"
         :key="index"
-        @click="changeActive(item.CategoryCode)"
+        @click="changeActive(item.CategoryCode,index)"
         :class="CategoryCode === item.CategoryCode ? 'active' : ''">
           {{item.CategoryName}}
-        </router-link>
+        </li>
       </ul>
     </div>
     <ul class="listContent">
-      <router-link tag="li" to="" class="listLi" v-for="goods in ClassItem" :key="goods.CategoryId">
+      <router-link tag="li" :to="{ name: 'productlist', params: { CategoryId: goods.CategoryId, CategoryCode:goods.CategoryCode }}" class="listLi" v-for="goods in ClassItem" :key="goods.CategoryId">
         <img :src="goods.PictureUrl" alt="">{{goods.CategoryName}}
       </router-link>
     </ul>
@@ -25,43 +24,15 @@ export default {
   name: 'ClassifyList',
   data () {
     return {
-      ClassifyList: [],
-      ClassItem: [],
       CategoryCode: '01_channelhome'
     }
   },
+  props: ['ClassifyList', 'ClassItem', 'changeList'],
   methods: {
-    getClassList () {
-      this.$http({
-        method: 'post',
-        url: '/gateway/api/commodityapi/Commodity/GetAllCategory',
-        headers: {
-          'appName': 3000025
-        },
-        data: {
-          Body: "",
-          Head: {
-            CityCode: "512",
-            CityId: "c8dbd17f-a8e0-43b1-b9ce-de1efdc2670e",
-            DeviceId: "78319e2dd184f448c2dacfc96be3f0ac",
-            DistrictId: "2252dc4d-0069-4c0f-b60f-21ce5607dd46",
-            LoginToken: '',
-            Token: ''
-          }
-        }
-      }).then((res) => {
-        this.ClassifyList = res.data.Data.CategoryList
-        this.ClassItem = res.data.Data.CategoryList[0].Childs
-        console.log(this.ClassifyList)
-      })
-    },
-    changeActive (CategoryCode) {
-      console.log(222)
+    changeActive (CategoryCode,index) {
       this.CategoryCode = CategoryCode
+      this.changeList(index)
     }
-  },
-  created () {
-    this.getClassList()
   }
 }
 </script>

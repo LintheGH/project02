@@ -8,6 +8,10 @@
       infinite-scroll-distance="10"
     class="list"></list>
     <div class="nomore" v-if="InfiniteScrollDisable">没有更多啦</div>
+    <div class="nolist" v-if="noList">
+      <img src="../../../assets/noting@3x.png">
+      <span>抱歉，没有找到您要的商品</span>
+    </div>
   </div>
 </template>
 <script>
@@ -32,6 +36,7 @@ export default {
       },
       CommodityList: [],
       InfiniteScrollDisable: false,
+      noList: false,
       flag: false
     }
   },
@@ -64,8 +69,11 @@ export default {
         for(let i=0;i<array.length;i++){
           this.CommodityList.push(array[i])
         }
-        if (res.data.Data.CurrentCount === 0) {
+        if (res.data.Data.CurrentCount === 0 && this.CommodityList.length > 0) {
           this.InfiniteScrollDisable = true
+        }
+        if(!this.CommodityList.length){
+          this.noList = true
         }
       })
     },
@@ -99,6 +107,8 @@ export default {
 <style lang="scss" scoped>
 .app-productlist{
   padding-top: .4rem;
+  min-height: 100%;
+  background: #eee;
   .header {
     position: fixed;
     width: 100%;
@@ -109,6 +119,16 @@ export default {
     text-align: center;
     padding: .2rem 0;
     background: #eee;
+  }
+  .nolist {
+    width: 100%;
+    padding-top: 1rem;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    img {
+      width: 30%;
+    }
   }
 }
   

@@ -4,11 +4,9 @@ import Cart from '../components/pages/Cart/Cart'
 import My from '../components/pages/My/My'
 import Login from '../components/pages/Login/Login'
 import Register from '../components/pages/Register/Register'
-// import Channelhome from '../components/pages/Classify/Components/channelhome'
 import Setting from '../components/pages/Setting/Setting'
 import Article from '../components/pages/Article/Article'
 import ProductList from '../components/pages/ProductList/ProductList'
-import List from '../components/pages/ProductList/Components/List'
 import Product from '../components/pages/Product/Product'
 var routes = [
   {
@@ -24,12 +22,6 @@ var routes = [
     path: '/classify',
     name: 'classify',
     component: Classify
-    // children: [
-    //   {
-    //     path: '',
-    //     redirect: { name: 'Channelhome'}
-    //   }
-    // ]
   },
   {
     path: '/log',

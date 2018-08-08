@@ -3,14 +3,14 @@
     <ul class="lists" v-if="lists">
       <li 
         v-for="item in lists"
-        :key="item.id" class="item"
-        @click="$emit('reSort', item.sort)"
+        :key="item.id"
+        class="item"
+        @click="$emit('reSort', item.sort),changeActive(item.id)"
         :class="id === item.id ? 'active' : ''"
       >
         {{ item.content }}
         <i v-if="item.icon" :class="'iconfont icon-' + item.icon"></i>
       </li>
-      <router-view></router-view>
     </ul>
   </div>
 </template>
@@ -46,6 +46,11 @@ export default {
     }
     .item {
       flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      border-bottom: 2px solid #fff;
     }
     .active {
       border-bottom: 2px solid #11B57C;

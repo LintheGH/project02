@@ -32,11 +32,6 @@ export default {
         disableOnInteraction: false
       }
     })
-  },
-  computed: {
-    showSwiper () {
-      return this.list.length
-    }
   }
 }
 </script>

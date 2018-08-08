@@ -1,7 +1,12 @@
 <template>
   <div class="sort-head">
     <ul class="lists" v-if="lists">
-      <li v-for="item in lists" :key="item.id" class="item" @click="$emit('reSort', item.sort)">
+      <li 
+        v-for="item in lists"
+        :key="item.id" class="item"
+        @click="$emit('reSort', item.sort)"
+        :class="id === item.id ? 'active' : ''"
+      >
         {{ item.content }}
         <i v-if="item.icon" :class="'iconfont icon-' + item.icon"></i>
       </li>
@@ -12,8 +17,18 @@
 <script>
 export default {
   name: 'sort-head',
+  data () {
+    return {
+      id: 1
+    }
+  },
   props: {// list = [{ id: 1, content: '销量', icon:'jiantou' }]
     lists: Array,
+  },
+  methods: {
+    changeActive (_id) {
+      this.id = _id
+    }
   }
 }
 </script>
@@ -31,6 +46,9 @@ export default {
     }
     .item {
       flex: 1;
+    }
+    .active {
+      border-bottom: 2px solid #11B57C;
     }
   }
 </style>

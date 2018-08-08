@@ -1,5 +1,5 @@
 <template>
-  <router-link tag="div" :to="{name: 'product', params: { CategoryId: data.CategoryId }}" class="list-item" v-if="data">
+  <router-link tag="div" exact :to="{name: 'product', params: { CategoryId: data.CategoryId }}" class="list-item" v-if="data">
     <div class="img-wrap">
       <img :src="data.SmallPic">
     </div>

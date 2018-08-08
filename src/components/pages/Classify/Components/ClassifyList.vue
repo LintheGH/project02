@@ -13,7 +13,7 @@
       </ul>
     </div>
     <ul class="listContent">
-      <router-link tag="li" :to="{ name: 'productlist', params: { CategoryId: goods.CategoryId, CategoryCode:goods.CategoryCode }}" class="listLi" v-for="goods in ClassItem" :key="goods.CategoryId">
+      <router-link tag="li" exact :to="{ name: 'productlist', params: { CategoryId: goods.CategoryId, CategoryCode:goods.CategoryCode }}" class="listLi" v-for="goods in ClassItem" :key="goods.CategoryId">
         <img :src="goods.PictureUrl" alt="">{{goods.CategoryName}}
       </router-link>
     </ul>

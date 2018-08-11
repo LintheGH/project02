@@ -1,27 +1,27 @@
 <template>
   <div class="app-product">
     <div class="product-top">
-      <i class="iconfont icon-fanhui"></i>
-      <img src="https://img11.yiguoimg.com/e/items/2016/160830/9288696818573598_500.jpg" alt="">
+      <a @click="$router.go(-1)" class="iconfont icon-fanhui"></a>
+      <img :src="Pictures" alt="">
     </div>
     <div class="productInfor">
-      <p class="title">崇明生态乳鸽300g</p>
+      <p class="title">{{CommodityInfo.CommodityName}}</p>
       <p class="subhead">
-        <i class="label">第2件半价</i>
-        <span>肉质柔嫩不腥 鲜香细腻</span>
+        <i class="label">{{CommodityInfo.PromotionTag}}</i>
+        <span>{{CommodityInfo.SubTitle}}</span>
       </p>
       <div class="price">
         <p class="priceIn">
           <span class="priceRed">
-            <i>￥</i>33.9
+            <i>￥</i>{{CommodityInfo.OriginalPrice}}
           </span>
         </p>
         <p class="area">
-          产地： <span class="name">上海</span>
+          产地： <span class="name">{{CommodityInfo.PlaceOfOrigin}}</span>
         </p>
       </div>
       <div class="sevenDay">
-        不支持7天无理由退货
+        {{CommodityInfo.CanNoReasonToReturnText}}
       </div>
     </div>
     <div class="sale">
@@ -29,18 +29,18 @@
         促销
       </h3>
       <div class="saleIn">
-        <div class="saleList">
-          <i class="label">优惠</i>
-          <p class="title">第2件半价</p>
+        <div class="saleList" v-if="content.PromotionTypeText">
+          <i class="label">{{content.PromotionTypeText}}</i>
+          <p class="title">{{content.PromotionTitle}}</p>
           <div class="list">
-            <p class="txt">满2件享7.5折</p>
+            <p class="txt">{{content.LevelTitle}}</p>
           </div>
         </div>
-        <div class="saleList saleList1">
-          <i class="label label1">全网</i>
-          <p class="title">满158赠奇异果*6</p>
+        <div class="saleList saleList1" v-if="content.PromotionTypeText1">
+          <i class="label label1">{{content.PromotionTypeText1}}</i>
+          <p class="title">{{content.PromotionTitle1}}</p>
           <div class="list">
-            <p class="txt">满158得赠品</p>
+            <p class="txt">{{content.LevelTitle1}}</p>
           </div>
         </div>
       </div>
@@ -50,14 +50,66 @@
 <script>
 export default {
   name: 'app-product',
-  
+  data () {
+    return {
+      sort: {
+        CommodityCode: '',
+        CommodityId: ""
+      },
+      CommodityInfo: {},
+      content: {
+        PromotionTypeText:'',
+        PromotionTypeText1:'',
+        PromotionTitle: '',
+        PromotionTitle1: '',
+        LevelTitle: '',
+        LevelTitle1: '',
+      },
+      Pictures: ''
+    }
+  },
+  methods: {
+    getCommodityInfo () {
+      this.$http({
+        method: 'post',
+        url: '/gateway/api/commodityapi/Commodity/GetCommodityInfo',
+        headers: {
+          'appName': 3000025,
+        },
+        data: {
+          Body: this.sort,
+          Head: {
+            CityCode: "512",
+            CityId: "c8dbd17f-a8e0-43b1-b9ce-de1efdc2670e",
+            DeviceId: "78319e2dd184f448c2dacfc96be3f0ac",DistrictId:"2252dc4d-0069-4c0f-b60f-21ce5607dd46",
+            LoginToken: "",
+            Token: ""
+          }
+        }
+      }).then(res => {
+        console.log(res)
+        this.CommodityInfo = res.data.Data.CommodityInfo
+        this.content.PromotionTitle = res.data.Data.CommodityInfo.CommodityPromotions[0] ? res.data.Data.CommodityInfo.CommodityPromotions[0].PromotionTitle : ''
+        this.content.PromotionTitle1 = res.data.Data.CommodityInfo.CommodityPromotions[1] ?res.data.Data.CommodityInfo.CommodityPromotions[1].PromotionTitle : ''
+        this.content.PromotionTypeText = res.data.Data.CommodityInfo.CommodityPromotions[0] ? res.data.Data.CommodityInfo.CommodityPromotions[0].PromotionTypeText : ''
+        this.content.PromotionTypeText1 = res.data.Data.CommodityInfo.CommodityPromotions[1] ? res.data.Data.CommodityInfo.CommodityPromotions[1].PromotionTypeText : ''
+        this.content.LevelTitle = res.data.Data.CommodityInfo.CommodityPromotions[0] ? res.data.Data.CommodityInfo.CommodityPromotions[0].PromotionLevels[0].LevelTitle : ''
+        this.content.LevelTitle1 = res.data.Data.CommodityInfo.CommodityPromotions[1]? res.data.Data.CommodityInfo.CommodityPromotions[1].PromotionLevels[0].LevelTitle : ''
+        this.Pictures = res.data.Data.CommodityInfo.Pictures[0]
+      })
+    }
+  },
+  created () {
+    this.sort.CommodityCode = this.$route.params.CommodityCode
+    this.getCommodityInfo()
+  }
 }
 </script>
 <style lang="scss" scoped>
   .app-product {
     position: relative;
     .product-top {
-      i {
+      a {
         position: absolute;
         top: 0.3rem;
         left: 0.3rem;

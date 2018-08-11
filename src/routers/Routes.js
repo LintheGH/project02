@@ -50,12 +50,12 @@ var routes = [
     component: Setting
   },
   {
-    path: '/productlist',
+    path: '/productlist/:CategoryId/:CategoryCode',
     name: 'productlist',
     component: ProductList
   },
   {
-    path: '/product/',
+    path: '/product/:CommodityCode',
     name: 'product',
     component: Product
   },

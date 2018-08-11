@@ -25,7 +25,7 @@ export default {
       ],
       sort: {
         CategoryCode: '',
-        CategoryId: 'ad7f227d-73c0-44a2-9edd-924006deb134', 
+        CategoryId: '', 
         Keyword: '',
         PageIndex: 1,
         Sort: 4
@@ -74,10 +74,9 @@ export default {
       this.getCommodityList()
     },
     reSort (sort) {
-      console.log(sort)
       if (sort.length > 1) {
         this.flag = !this.flag
-        let num = Number(flag)
+        let num = Number(this.flag)
         this.sort.Sort = sort[num]
         this.sort.PageIndex = 1
         this.CommodityList = []
@@ -92,6 +91,8 @@ export default {
   },
   created () {
     this.getCommodityList()
+    this.sort.CategoryCode = this.$route.params.CategoryCode
+    this.sort.CategoryId = this.$route.params.CategoryId
   }
 }
 </script>

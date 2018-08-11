@@ -69,7 +69,6 @@ export default {
         }
       }
     }).then(res => {
-      console.log(res)
       this.BalanceAndCoupons = res.data.Data.UserInfo.BalanceAndCoupons
       this.CheckInfo = res.data.Data.UserInfo.CheckInfo
       this.IconList = res.data.Data.UserInfo.IconList

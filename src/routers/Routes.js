@@ -7,7 +7,6 @@ import Register from '../components/pages/Register/Register'
 import Setting from '../components/pages/Setting/Setting'
 import Article from '../components/pages/Article/Article'
 import ProductList from '../components/pages/ProductList/ProductList'
-import List from '../components/pages/ProductList/Components/List'
 import Product from '../components/pages/Product/Product'
 var routes = [
   {

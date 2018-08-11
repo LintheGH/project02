@@ -41,9 +41,11 @@ export default {
     font-size: .12rem;
     padding: .15rem .09rem;
     border-bottom: .01rem solid #eee;
+    background: #fff;
     display: flex;
     .img-wrap {
       height: 100%;
+      width: 1.12rem;
       img {
         height: 100%;
       }

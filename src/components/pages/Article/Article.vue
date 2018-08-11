@@ -4,7 +4,7 @@
       <i class="loading">
         <img src="../../../assets/loading-gif.gif">
       </i>
-      <span>网页建设中...</span>
+      <span></span>
     </div>
   </div>
 </template>

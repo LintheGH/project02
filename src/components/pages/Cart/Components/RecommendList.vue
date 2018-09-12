@@ -1,5 +1,7 @@
 <template>
-  <div class="recommend-list"></div>
+  <div class="recommend-list">
+    <span>猜你喜欢</span>
+  </div>
 </template>
 <script>
 export default {
@@ -8,6 +10,6 @@ export default {
 </script>
 <style lang="scss" scoped>
   .recommend-list {
-    
+
   }
 </style>

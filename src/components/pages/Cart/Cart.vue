@@ -1,6 +1,7 @@
 <template>
   <div class="app-cart">
     <cart-item></cart-item>
+    <fail-item></fail-item>
     <recommend-list></recommend-list>
     <clearing></clearing>
     <app-nav></app-nav>
@@ -10,12 +11,14 @@
 import CartItem from './Components/CartItem'
 import RecommendList from './Components/RecommendList'
 import Clearing from './Components/Clearing'
+import FailItem from './Components/FailItem'
 export default {
   name: 'app-cart',
   components: {
     CartItem,
     RecommendList,
-    Clearing
+    Clearing,
+    FailItem
   }
 }
 </script>
